@@ -1,0 +1,95 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-foo-table-heading" data-cy="FooTableCreateUpdateHeading">Create or edit a Foo Table</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_source">Source</label>
+          <input type="text" class="form-control" name="source" id="field_source" data-cy="source" formControlName="source" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_codeListCode">Code List Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeListCode"
+            id="field_codeListCode"
+            data-cy="codeListCode"
+            formControlName="codeListCode"
+          />
+        </div>
+
+        <div class="form-group" [hidden]="editForm.get('code')!.value == null">
+          <label class="form-control-label" for="field_code">Code</label>
+          <input type="number" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_displayValue">Display Value</label>
+          <input
+            type="text"
+            class="form-control"
+            name="displayValue"
+            id="field_displayValue"
+            data-cy="displayValue"
+            formControlName="displayValue"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_longDescription">Long Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="longDescription"
+            id="field_longDescription"
+            data-cy="longDescription"
+            formControlName="longDescription"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fromDate">From Date</label>
+          <input type="text" class="form-control" name="fromDate" id="field_fromDate" data-cy="fromDate" formControlName="fromDate" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_toDate">To Date</label>
+          <input type="text" class="form-control" name="toDate" id="field_toDate" data-cy="toDate" formControlName="toDate" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_sortingPriority">Sorting Priority</label>
+          <input
+            type="number"
+            class="form-control"
+            name="sortingPriority"
+            id="field_sortingPriority"
+            data-cy="sortingPriority"
+            formControlName="sortingPriority"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

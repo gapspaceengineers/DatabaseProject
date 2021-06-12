@@ -1,10 +1,10 @@
-entity FooTable {	
+entity FooTable {
   source String,
   codeListCode String,
   @Id code Long,
   displayValue String,
   longDescription String,
-  fromDate Date,
-  toDate Date,
+  fromDate String,
+  toDate String,
   sortingPriority Long
 }

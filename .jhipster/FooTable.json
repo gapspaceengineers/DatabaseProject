@@ -1,0 +1,51 @@
+{
+  "name": "FooTable",
+  "fields": [
+    {
+      "fieldName": "source",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeListCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "displayValue",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "longDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fromDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "toDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sortingPriority",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "foo_table",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210612151855"
+}

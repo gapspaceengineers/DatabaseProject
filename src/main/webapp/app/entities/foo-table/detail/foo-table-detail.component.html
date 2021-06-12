@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fooTable">
+      <h2 data-cy="fooTableDetailsHeading"><span>Foo Table</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Source</span></dt>
+        <dd>
+          <span>{{ fooTable.source }}</span>
+        </dd>
+        <dt><span>Code List Code</span></dt>
+        <dd>
+          <span>{{ fooTable.codeListCode }}</span>
+        </dd>
+        <dt><span>Code</span></dt>
+        <dd>
+          <span>{{ fooTable.code }}</span>
+        </dd>
+        <dt><span>Display Value</span></dt>
+        <dd>
+          <span>{{ fooTable.displayValue }}</span>
+        </dd>
+        <dt><span>Long Description</span></dt>
+        <dd>
+          <span>{{ fooTable.longDescription }}</span>
+        </dd>
+        <dt><span>From Date</span></dt>
+        <dd>
+          <span>{{ fooTable.fromDate }}</span>
+        </dd>
+        <dt><span>To Date</span></dt>
+        <dd>
+          <span>{{ fooTable.toDate }}</span>
+        </dd>
+        <dt><span>Sorting Priority</span></dt>
+        <dd>
+          <span>{{ fooTable.sortingPriority }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/foo-table', fooTable.code, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

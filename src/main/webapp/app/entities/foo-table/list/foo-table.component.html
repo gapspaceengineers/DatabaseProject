@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="FooTableHeading">
+    <span>Foo Tables</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-foo-table"
+        [routerLink]="['/foo-table/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Foo Table </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fooTables?.length === 0">
+    <span>No fooTables found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="fooTables && fooTables.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>Source</span></th>
+          <th scope="col"><span>Code List Code</span></th>
+          <th scope="col"><span>Code</span></th>
+          <th scope="col"><span>Display Value</span></th>
+          <th scope="col"><span>Long Description</span></th>
+          <th scope="col"><span>From Date</span></th>
+          <th scope="col"><span>To Date</span></th>
+          <th scope="col"><span>Sorting Priority</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fooTable of fooTables; trackBy: trackCode" data-cy="entityTable">
+          <td>{{ fooTable.source }}</td>
+          <td>{{ fooTable.codeListCode }}</td>
+          <td>
+            <a [routerLink]="['/foo-table', fooTable.code, 'view']">{{ fooTable.code }}</a>
+          </td>
+          <td>{{ fooTable.displayValue }}</td>
+          <td>{{ fooTable.longDescription }}</td>
+          <td>{{ fooTable.fromDate }}</td>
+          <td>{{ fooTable.toDate }}</td>
+          <td>{{ fooTable.sortingPriority }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/foo-table', fooTable.code, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/foo-table', fooTable.code, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(fooTable)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
